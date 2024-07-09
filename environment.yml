@@ -1,0 +1,34 @@
+name: SPIE2024
+channels:
+    - conda-forge
+    - intel
+    - astra-toolbox
+    - ccpi
+dependencies:
+    - python=3.10
+    - ipython
+    - ipykernel
+    - ipyevents=2.0.1
+    - ipympl=0.9.1
+    - ipywidgets=7.7.0
+    - jupyterlab=3.4
+    - mpl-interactions=0.22.0        
+    - numpy
+    # - cma
+    # - libtiff
+    # - scikit-image
+    # - vtk
+    # - SimpleITK
+    - matplotlib
+    - cil=23.1.0
+    - ccpi-regulariser
+    - tigre
+    - astra-toolbox
+    - k3d
+    - pip
+    - pip:
+        # - pymeshlab
+        - git+https://bitbucket.org/spekpy/spekpy_release.git
+        - xpecgen
+        # gVXR from the trunk in the Git repository
+        - git+https://git.code.sf.net/p/gvirtualxray/gitroot
