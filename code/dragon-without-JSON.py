@@ -307,7 +307,9 @@ gvxr.terminate();
 
 
 # Display and save the geometry, does it look like a feasible CT scan set up?
-show_geometry(geometry).save("geometry.png");
+fig = show_geometry(geometry);
+fig.save("../results/dragon-geometry.png");
+fig.save("../results/dragon-geometry.pdf");
 
 
 # Print details of the scanning geometry
