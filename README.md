@@ -34,3 +34,5 @@
         - dragon-with-JSON.ipynb: interactive notebook
         - dragon-with-JSON.py: python script
 
+        - dragon-without-JSON-simplified.py: same python script as dragon-without-JSON.py, but without any visualisation
+        - dragon-with-JSON-simplified.py: same python script as dragon-with-JSON.py, but without any visualisation
