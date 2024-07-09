@@ -277,7 +277,7 @@ constraint = IndicatorBox(lower=0)
 sirt = SIRT(initial=x0, operator=A, data=acquisition_data, constraint=constraint, max_iteration=500)
 
 
-# Perform 200 iterations
+# Perform 500 iterations
 sirt.update_objective_interval = 50
 sirt.run(500)
 
