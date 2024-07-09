@@ -1,3 +1,13 @@
+results/.ipynb_checkpoints
+results/*.pdf
+results/dragon-projs
+results/dragon-recons-FDK
+results/dragon-recons-SIRT
+results/dragon-snapshot.html
+results/dragon.json
+results/dragon-geometry.png
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
