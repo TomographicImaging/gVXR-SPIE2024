@@ -1,0 +1,47 @@
+{
+    "File format version": [1, 0, 0],
+    "Window size": [500, 500],
+    "Source": {
+        "Position": [0.0, -80.0, 0.0, "mm"],
+        "Shape": "PARALLEL",
+        "Beam": {
+            "Peak kilo voltage": 160.0,
+            "Tube angle": 12.0,
+            "mAs": 0.5,
+            "filter": [
+                ["Sn", 1.0, "mm"]
+            ]
+        }
+    },
+    "Detector": {
+        "Position": [0.0, 80.0, 0.0, "mm"],
+        "UpVector": [0.0, 0.0, -1.0],
+        "RightVector": [-1.0, 0.0, 0.0],
+        "NumberOfPixels": [512, 512],
+        "Size": [256.0, 256.0, "mm"]
+    },
+    "Samples": [
+        {
+            "Label": "Step wedge",
+            "StepWedge": {
+                "NumberOfSteps": 5,
+                "TotalLength": 20,
+                "Width": 5,
+                "FirstStepHeight": 2,
+                "OtherStepHeight": 1,
+                "Unit": "mm"
+            },
+            "Transform": [
+                [
+                    "Rotation", 90.0, 1.0, 0.0, 0.0
+                ]
+            ],
+            "Material": ["Element", "Au"],
+            "Type": "inner",
+            "AmbientColour": [1.0, 1.0, 1.0, 1.0],
+            "DiffuseColour": [1.0, 1.0, 1.0, 1.0],
+            "SpecularColour": [1.0, 1.0, 1.0, 1.0],
+            "Shininess": 50.0
+        }
+    ]
+}

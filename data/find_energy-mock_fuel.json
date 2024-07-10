@@ -1,0 +1,60 @@
+{
+    "WindowSize": [1500, 500],
+
+    "Detector": {
+        "Position": [0.0, -0.50, 0, "m"],
+        "UpVector": [0, 0, 1],
+        "NumberOfPixels": [2560, 2160],
+        "Spacing": [7.91, 7.91, "um"]
+    },
+
+    "Source": {
+        "Position": [0.0, 51.0, 0.0, "m"],
+        "Shape": "ParallelBeam",
+        "Beam": [
+            {
+                "Energy": 150,
+                "Unit": "keV",
+                "PhotonCount": 20000
+            }
+        ]
+    },
+
+    "Scan": {
+        "NumberOfProjections": 1801,
+        "FinalAngle": 180,
+        "IncludeFinalAngle": true,
+        "CenterOfRotation": [0,0,0],
+        "OutFolder": "simulation/ideal/raw_projections",
+        "GifPath": "simulation"
+    },
+
+    
+    "Samples": [
+        {
+            "Label": "Matrix",
+            "Path": "matrix.stl",
+            "Unit": "mm",
+            "Material": ["Compound", "ZrO2"],
+            "Density": 3.23,
+            "Type" : "outer",
+            "Transform": [
+                ["Rotation", 90, 0, 0, 1],
+                ["Rotation", 90, 1, 0, 0]
+            ]
+        },
+
+        {
+            "Label": "Kernels",
+            "Path": "kernels.stl",
+            "Unit": "mm",
+            "Material": ["Compound", "ZrB2"],
+            "Density": 2.43,
+            "Type" : "inner",
+            "Transform": [
+                ["Rotation", 90, 0, 0, 1],
+                ["Rotation", 90, 1, 0, 0]
+            ]
+        }
+    ]
+}
