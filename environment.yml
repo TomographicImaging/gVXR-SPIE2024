@@ -1,7 +1,7 @@
-name: SPIE2024
+name: gVXR-SPIE2024
 channels:
     - conda-forge
-    - intel
+    # - intel
     - astra-toolbox
     - ccpi
 dependencies:
@@ -20,15 +20,17 @@ dependencies:
     # - vtk
     # - SimpleITK
     - matplotlib
-    - cil=23.1.0
-    - ccpi-regulariser
+    - cil=24.0.0
+    # - ccpi-regulariser
     - tigre
     - astra-toolbox
     - k3d
+    - algotom
     - pip
     - pip:
         # - pymeshlab
         - git+https://bitbucket.org/spekpy/spekpy_release.git
         - xpecgen
         # gVXR from the trunk in the Git repository
-        - git+https://git.code.sf.net/p/gvirtualxray/gitroot
+        # - git+https://git.code.sf.net/p/gvirtualxray/gitroot
+
