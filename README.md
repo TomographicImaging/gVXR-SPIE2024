@@ -107,12 +107,14 @@ X-ray imaging, computed tomography, simulation, GPU programming
 
 You must install Conda. See [https://conda.io/projects/conda/en/latest/user-guide/install/index.html](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) for more information.
 
-
 ## Installation
 
 ```bash
 conda  env create -f environment.yml
 ```
+## Supported platform
+
+The code has been tested on GNU/Linux x86_64 and Windows x86_64.
 
 ## Related software projects
 
