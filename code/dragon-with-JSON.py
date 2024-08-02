@@ -21,7 +21,7 @@
 # 
 # This example makes use of two open source libraries fro X-ray imaging. The first one is [gVXR](https://gvirtualxray.sourceforge.io/). It is used to simulate realistic radiographic images from a CAD model. This time **a JSON file is used to set the simulation parameters.** The JSON file format is relatively user friendly. It is much easier to describe the simulation parameters as no code is needed. The second one is [CIL](https://ccpi.ac.uk/cil/). It implements many CT reconstruction algorithms, including the well-known FDK. The details of the CT scan acquisition are given in the table below. Both FDK and SIRT (iterative method) reconstructions were performed. 
 # 
-# ![Image comparison of the FDK and SIRT reconstructions](../results/dragon-comparison.png)
+# ![Image comparison of the FDK and SIRT reconstructions](../results/dragon/comparison.png)
 # 
 # | Parameter | Value |
 # |-----------|-------|
@@ -31,15 +31,15 @@
 # | detector resolution | 512 &times; 512 pixels |
 # | pixel pitch | 500 &times; 500 &mu;m |
 # | scintillator | 500 &mu;m of CsI|
-# | energy response of the detector | ![Plot of the energy response of the detector](../results/dragon-detector-energy_response.png) |
-# | detector impulse response | ![Plot of the detector impulse response](../results/dragon-detector-LSF.png) |
+# | energy response of the detector | ![Plot of the energy response of the detector](../results/dragon/detector-energy_response.png) |
+# | detector impulse response | ![Plot of the detector impulse response](../results/dragon/detector-LSF.png) |
 # | tube anode material | tungsten |
 # | tube anode angle | 10&deg; |
 # | tube voltage | 160 kV |
 # | beam filtration | 1mm of Sn |
 # | tube exposure | 0.5 mAs |
-# | beam spectrum | ![Plot of the beam spectrum](../results/dragon-beam-spectrum.png) |
-# | sample geometry | ![](../results/dragon-wireframe.png) |
+# | beam spectrum | ![Plot of the beam spectrum](../results/dragon/beam-spectrum.png) |
+# | sample geometry | ![](../results/dragon/wireframe.png) |
 # | sample material composition | Ti90Al6V4 |
 # | sample material density | 4.43 g/cm<sup>3</sup>|
 # | number of projection | 200 |
@@ -104,8 +104,8 @@ plt.plot(detector_response[:,0], detector_response[:,1])
 plt.xlabel('Incident energy: E (in keV)')
 plt.ylabel('Detector energy response: $\\delta$(E) (in keV)')
 plt.tight_layout()
-plt.savefig("../results/dragon-detector-energy_response.png", dpi=20)
-plt.savefig("../results/dragon-detector-energy_response.pdf", dpi=600)
+plt.savefig("../results/dragon/detector-energy_response.png", dpi=20)
+plt.savefig("../results/dragon/detector-energy_response.pdf", dpi=600)
 
 
 # Plot the energy response of the detector
@@ -119,8 +119,8 @@ plt.plot(x, lsf)
 plt.xlabel('Pixels')
 plt.ylabel('Intensity')
 plt.tight_layout()
-plt.savefig("../results/dragon-detector-LSF.png", dpi=20)
-plt.savefig("../results/dragon-detector-LSF.pdf", dpi=600)
+plt.savefig("../results/dragon/detector-LSF.png", dpi=20)
+plt.savefig("../results/dragon/detector-LSF.pdf", dpi=600)
 
 
 # Create a source
@@ -139,8 +139,8 @@ plt.title('Photon energy distribution')
 plt.xlim([0,200])
 plt.tight_layout()
 
-plt.savefig("../results/dragon-beam-spectrum.png", dpi=20)
-plt.savefig("../results/dragon-beam-spectrum.pdf", dpi=600)
+plt.savefig("../results/dragon/beam-spectrum.png", dpi=20)
+plt.savefig("../results/dragon/beam-spectrum.pdf", dpi=600)
 
 
 # Load the sample
@@ -227,8 +227,8 @@ gvxr.terminate()
 
 # Display and save the geometry, does it look like a feasible CT scan set up?
 fig = show_geometry(geometry);
-fig.save("../results/dragon-geometry.png");
-fig.save("../results/dragon-geometry.pdf");
+fig.save("../results/dragon/geometry.png");
+fig.save("../results/dragon/geometry.pdf");
 
 
 # Print details of the scanning geometry
@@ -257,7 +257,7 @@ show2D(recon)
 
 
 # Save the CT volume as a TIFF stack
-TIFFWriter(data=recon, file_name=os.path.join("../results/dragon-recons-FDK", "out")).write()
+TIFFWriter(data=recon, file_name=os.path.join("../results/dragon/recons-FDK", "out")).write()
 
 
 ## Perform the CT reconstruction using the SIRT algorithm and save the reconstructed volume
@@ -293,12 +293,12 @@ fig = show2D([recon, recon_sirt_noisy, (recon-recon_sirt_noisy).abs()], \
        ['FBP', 'SIRT', 'difference'], \
        cmap="gray", num_cols=3, size=(15,15), origin='bottom-left', fix_range=True);
 
-fig.save("../results/dragon-comparison.png", dpi=300)
-fig.save("../results/dragon-comparison.pdf", dpi=600)
+fig.save("../results/dragon/comparison.png", dpi=300)
+fig.save("../results/dragon/comparison.pdf", dpi=600)
 
 
 # Save the CT volume as a TIFF stack
-TIFFWriter(data=recon_sirt_noisy, file_name=os.path.join("../results/dragon-recons-SIRT", "out")).write()
+TIFFWriter(data=recon_sirt_noisy, file_name=os.path.join("../results/dragon/recons-SIRT", "out")).write()
 
 # Show the plots
 plt.show();

@@ -29,15 +29,15 @@
 # | detector resolution | 512 &times; 512 pixels |
 # | pixel pitch | 500 &times; 500 &mu;m |
 # | scintillator | 500 &mu;m of CsI|
-# | energy response of the detector | ![Plot of the energy response of the detector](../results/dragon-detector-energy_response.png) |
-# | detector impulse response | ![Plot of the detector impulse response](../results/dragon-detector-LSF.png) |
+# | energy response of the detector | ![Plot of the energy response of the detector](../results/dragon/detector-energy_response.png) |
+# | detector impulse response | ![Plot of the detector impulse response](../results/dragon/detector-LSF.png) |
 # | tube anode material | tungsten |
 # | tube anode angle | 10&deg; |
 # | tube voltage | 160 kV |
 # | beam filtration | 1mm of Sn |
 # | tube exposure | 0.5 mAs |
-# | beam spectrum | ![Plot of the beam spectrum](../results/dragon-beam-spectrum.png) |
-# | sample geometry | ![](../results/dragon-wireframe.png) |
+# | beam spectrum | ![Plot of the beam spectrum](../results/dragon/beam-spectrum.png) |
+# | sample geometry | ![](../results/dragon/wireframe.png) |
 # | sample material composition | Ti90Al6V4 |
 # | sample material density | 4.43 g/cm<sup>3</sup>|
 # | number of projection | 200 |
@@ -72,6 +72,11 @@ from cil.optimisation.algorithms import SIRT
 from cil.optimisation.functions import IndicatorBox
 from cil.plugins.astra.operators import ProjectionOperator
 
+if not os.path.exists("../results"):
+    os.mkdir("../results")
+    
+if not os.path.exists("../results/dragon"):
+    os.mkdir("../results/dragon")
 
 ## Set the simulation parameters
 
@@ -102,8 +107,8 @@ plt.plot(detector_response[:,0], detector_response[:,1]);
 plt.xlabel('Incident energy: E (in keV)');
 plt.ylabel('Detector energy response: $\\delta$(E) (in keV)');
 plt.tight_layout();
-plt.savefig("../results/dragon-detector-energy_response.png", dpi=20);
-plt.savefig("../results/dragon-detector-energy_response.pdf", dpi=600);
+plt.savefig("../results/dragon/detector-energy_response.png", dpi=20);
+plt.savefig("../results/dragon/detector-energy_response.pdf", dpi=600);
 
 
 # Plot the energy response of the detector
@@ -117,8 +122,8 @@ plt.plot(x, lsf);
 plt.xlabel('Pixels');
 plt.ylabel('Intensity');
 plt.tight_layout();
-plt.savefig("../results/dragon-detector-LSF.png", dpi=20);
-plt.savefig("../results/dragon-detector-LSF.pdf", dpi=600);
+plt.savefig("../results/dragon/detector-LSF.png", dpi=20);
+plt.savefig("../results/dragon/detector-LSF.pdf", dpi=600);
 
 
 # Create a source
@@ -155,8 +160,8 @@ plt.title('Photon energy distribution');
 plt.xlim([0,200]);
 plt.tight_layout();
 
-plt.savefig("../results/dragon-beam-spectrum.png", dpi=20);
-plt.savefig("../results/dragon-beam-spectrum.pdf", dpi=600);
+plt.savefig("../results/dragon/beam-spectrum.png", dpi=20);
+plt.savefig("../results/dragon/beam-spectrum.pdf", dpi=600);
 
 
 # Locate the sample STL file from the package directory
@@ -234,7 +239,7 @@ plt.axis('off');
 ## Simulate the CT acquisition and save the projections
 
 # Simulate a CT scan acquisition
-gvxr.computeCTAcquisition("../results/dragon-projs", # Where to save the projections
+gvxr.computeCTAcquisition("../results/dragon/projs", # Where to save the projections
                           "screenshots", # Where to save the screenshots
                           200, # Total number of projections
                           0, # First angle
@@ -252,7 +257,7 @@ gvxr2json.saveJSON("../results/dragon.json");
 ## Set the CT reconstruction parameters
 
 # Create the TIFF reader by passing the directory containing the files
-reader = TIFFStackReader(file_name="../results/dragon-projs", dtype=np.float32);
+reader = TIFFStackReader(file_name="../results/dragon/projs", dtype=np.float32);
 
 # Read in file, and return a numpy array containing the data
 data_original = reader.read();
@@ -308,8 +313,8 @@ gvxr.terminate();
 
 # Display and save the geometry, does it look like a feasible CT scan set up?
 fig = show_geometry(geometry);
-fig.save("../results/dragon-geometry.png");
-fig.save("../results/dragon-geometry.pdf");
+fig.save("../results/dragon/geometry.png");
+fig.save("../results/dragon/geometry.pdf");
 
 
 # Print details of the scanning geometry
@@ -345,7 +350,7 @@ show2D(recon);
 
 
 # Save the CT volume as a TIFF stack
-TIFFWriter(data=recon, file_name=os.path.join("../results/dragon-recons-FDK", "out")).write();
+TIFFWriter(data=recon, file_name=os.path.join("../results/dragon/recons-FDK", "out")).write();
 
 
 ## Perform the CT reconstruction using the SIRT algorithm and save the reconstructed volume
@@ -383,7 +388,7 @@ show2D([recon, recon_sirt_noisy, (recon-recon_sirt_noisy).abs()], \
 
 
 # Save the CT volume as a TIFF stack
-TIFFWriter(data=recon_sirt_noisy, file_name=os.path.join("../results/dragon-recons-SIRT", "out")).write();
+TIFFWriter(data=recon_sirt_noisy, file_name=os.path.join("../results/dragon/recons-SIRT", "out")).write();
 
 # Show the plots
 plt.show();
