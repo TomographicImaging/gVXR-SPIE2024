@@ -1,7 +1,6 @@
 name: gVXR-SPIE2024
 channels:
     - conda-forge
-    # - intel
     - https://software.repos.intel.com/python/conda 
     - ccpi
 dependencies:
@@ -20,7 +19,7 @@ dependencies:
     # - vtk
     - SimpleITK
     - matplotlib
-    - cil=24.0.0
+    - cil=24.1.0
     - tigre
     - astra-toolbox=*=cuda* 
     - k3d
