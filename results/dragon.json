@@ -129,7 +129,7 @@
     "Samples": [
         {
             "Label": "Dragon",
-            "Path": "..\\..\\..\\..\\AppData\\Local\\miniconda3\\envs\\gVXR-SPIE2024\\lib\\site-packages\\gvxrPython3\\_gvxrPython3\\welsh-dragon-small.stl",
+            "Path": "../../../../miniconda3/envs/gVXR-SPIE2024/lib/python3.10/site-packages/gvxrPython3/_gvxrPython3/welsh-dragon-small.stl",
             "Unit": "mm",
             "Material": [
                 "Mixture",
